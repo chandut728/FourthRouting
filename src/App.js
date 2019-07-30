@@ -1,19 +1,34 @@
 import './App.css'
 
-import React, {Component} from 'react'
+import React from 'react'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return <div className="App">
-      <div className="App-heading App-flex">
-        <h2>Welcome to <span className="App-react">React</span></h2>
-      </div>
-      <div className="App-instructions App-flex">
-        <img className="App-logo" src={require('./react.svg')}/>
-        <p>Edit <code>src/App.js</code> and save to hot reload your changes.</p>
-      </div>
+import Home from './Components/Home';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import Error from './Components/Error';
+import Navigation from './Components/Navigation'
+
+function App(){
+  return(
+    <div>
+        <BrowserRouter>
+        <div>
+        <Navigation />
+        <Switch>
+
+          <Route path = "/" component = {Home} exact />
+          <Route path = "/about" component = {About} />
+          <Route path = "/contact" component = {Contact} />
+          <Route component = {Error} />
+
+
+        </Switch>
+        </div>
+        </BrowserRouter>
     </div>
-  }
+  )
+
 }
 
 export default App
